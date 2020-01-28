@@ -98,5 +98,10 @@ SysCallIntResult OsSysCallsImpl::gethostname(char* name, size_t length) {
   return {rc, errno};
 }
 
+SysCallIntResult OsSysCallsImpl::listen(int sockfd, int backlog) {
+  const int rc = ::listen(sockfd, backlog);
+  return {rc, errno};
+}
+
 } // namespace Api
 } // namespace Envoy
