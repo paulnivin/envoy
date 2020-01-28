@@ -58,7 +58,7 @@ void ListenerImpl::setupServerSocket(Event::DispatcherImpl& dispatcher, Socket& 
     throw CreateListenerException(
 	fmt::format("cannot listen on socket: {}", socket.localAddress()->asString()));
   }
-  // Inform libevent that we've already called listen and set a backlog.
+  // Inform libevent that we've already called listen and to not set a backlog.
   evconnlistener_backlog = 0;
 #endif
 
