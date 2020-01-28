@@ -59,10 +59,10 @@ void ListenerImpl::setupServerSocket(Event::DispatcherImpl& dispatcher, Socket& 
 #endif
 
   const Api::SysCallIntResult result = Api::OsSysCallsSingleton::get().listen(
-									  socket.ioHandle().fd(),
-									  listen_backlog);
+                                                                          socket.ioHandle().fd(),
+                                                                          listen_backlog);
   RELEASE_ASSERT(result.rc_ != -1,
-		 fmt::format("listen(2) failed, got error: {}", strerror(result.errno_)))
+                 fmt::format("listen(2) failed, got error: {}", strerror(result.errno_)))
 
   listener_.reset(
       evconnlistener_new(&dispatcher.base(), listenCallback, this, 0, 0, socket.ioHandle().fd()));
